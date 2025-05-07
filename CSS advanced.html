@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style advanded.css">
+  <title>CSS 応用編</title>
+</head>
+
+<body>
+
+  <header>
+    <div>
+      <a href="/Users/mastudo/Desktop/webデザ/Lesson/HTML/HTML.html">HTML編</a>
+      <a href="/Users/mastudo/Desktop/webデザ/Lesson/CSS basic/CSS basic.html">CSS基本編</a>
+      <p>CSS応用編</p>
+      <a href="/Users/mastudo/Desktop/webデザ/Lesson/CSS Selectors/selectors.html">Selectors編</a>
+    </div>
+    <div>
+      <a href="/Users/mastudo/Desktop/webデザ/Lesson/CSS Flexbox/flexbox.html">Flexbox編</a>
+      <a href="/Users/mastudo/Desktop/webデザ/Lesson/CSS MediaQueries/MediaQueries.html">MediaQueries編</a>
+      <a href="/Users/mastudo/Desktop/webデザ/Lesson/CSS Animation/Animation.html">Animation編</a>
+      <a href="/Users/mastudo/Desktop/webデザ/Lesson/CSS Nesting/Nesting.html">Nesting編</a>
+      <a href="/Users/mastudo/Desktop/webデザ/Lesson/CSS Grid/inndex.html">Grid編</a>
+    </div>
+  </header>
+  <a href="/Users/mastudo/Desktop/webデザ/Lesson/index.html" class="a-lesson">←Lesson</a>
+  <a class="a-top" href="#">↑TOP</a>
+  <main>
+    <section>
+      <h2>CSS応用編メモ</h2>
+      <dl>
+        <dt>ブロックボックス</dt>
+        <dd>
+          横幅いっぱいに広がり、次の要素が下に配置されていくようなボックス。<br><code>&lt;h1&gt;</code>や<code>&lt;p&gt;</code>、<code>&lt;section&gt;</code>、<code>&lt;header&gt;</code>、<code>&lt;footer&gt;</code>、<code>&lt;div&gt;</code>などの要素。
+        </dd>
+        <dt>インラインボックス</dt>
+        <dd>文中にコンテンツの幅で配置され、次の要素が右に配置されるボックス。<br><code>&lt;a&gt;</code>や<code>&lt;img&gt;</code>、
+          <code>&lt;code&gt;</code>、<code>&lt;time&gt;</code>、<code>&lt;span&gt;</code>などの要素。
+        </dd>
+        <dt>インラインボックスの特徴</dt>
+        <dd>
+          インラインボックスでは、ブロックボックスのプロパティが部分的にしかサポートされない。<br>例えば、<code>width</code>や<code>height</code>nのプロパティはインラインボックスでは無効となる。<br>また、<code>border</code>、<code>padding</code>、<code>margin</code>は左右方向に対しては有効だが、上下方向に対する指定は無効となる。<br>更にインラインボックスでは次の要素が右に来るため、<code>margin</code>において<code>auto</code>で振り分けることもできない。
+        </dd>
+        <dt>インラインボックスの余白</dt>
+        <dd>HTMLでテキストの途中に改行や字下げがある場合、ブラウザではインラインボックスの左右に半角空白として反映される。</dd>
+      </dl>
+    </section>
+    <section class="display">
+      <h2><code>display</code>プロパティ</h2>
+      <div>
+        <table class="table-1">
+          <thead>
+            <tr>
+              <th class="th-0">プロパティ/値</th>
+              <th class="th-0">名称</th>
+              <th class="th-0">役割</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="td-0"><code>display: block;</code></td>
+              <td class="td-0">ブロック</td>
+              <td class="td-0">指定のボックスの種類をブロックボックスに切り替える。</td>
+            </tr>
+            <tr>
+              <td class="td-0"><code>display: inline;</code></td>
+              <td class="td-0">インライン</td>
+              <td class="td-0">指定のボックスの種類をインラインボックスに切り替える。</td>
+            </tr>
+            <tr>
+              <td class="td-0"><code>display: inline-block;</code></td>
+              <td class="td-0">インラインブロック</td>
+              <td class="td-0">
+                ブロックボックスのように幅や高さが設定できるようにしつつ、次の要素が隣にくる。<br><code>block</code>と違い、<code>marginn</code>の<code>auto</code>値は無効となる。
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <footer>
+          ※<code>img</code>プロパティは"置換要素"という特殊な要素で、インラインボックスにも関わらずサイズ指定が可能。<br>そのため、CSSで指定せずとも<code>inline-block</code>と同じ挙動をとる。
+        </footer>
+      </div>
+      <img class="dis" src="display property.png" alt="displayプロパティ図解">
+    </section>
+    <section class="s-rel">
+      <h2><code>class</code>と<code>id</code>の役割の違い</h2>
+      <p><code>class</code>と<code>id</code>はともに<br>『特定の要素にCSSを適用させる』際に使用するHTML属性だが、<br>それぞれには用途や優先順位など違いがある。</p>
+      <table class="t-inline table-1">
+        <thead>
+          <tr>
+            <th class="th-0">属性</th>
+            <th class="th-0">HTML</th>
+            <th class="th-0">CSS</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="td-0"><code>class</code></td>
+            <td class="td-0"><code>class=""</code></td>
+            <td class="td-0"><code>.</code>class名<code>{ }</code></td>
+          </tr>
+          <tr>
+            <td class="td-0"><code>id</code></td>
+            <td class="td-0"><code>id=""</code></td>
+            <td class="td-0"><code>#</code>id名<code>{ }</code></td>
+          </tr>
+        </tbody>
+      </table>
+      <h3>ルール</h3>
+      <ul>
+        <h4>id</h4>
+        <li>id名は１ページに1つだけ</li>
+        <img src="id1.webp" class="image">
+        <li>１要素に複数のid名は付与できない</li>
+        <img src="id2.webp" class="image2">
+      </ul>
+      <ul>
+        <h4>class</h4>
+        <li>1つのページに複数のclass名を使える</li>
+        <img src="class1.webp" class="image">
+        <li>1要素に複数のclass名を付与できる</li>
+        <img src="class2.webp" class="image2">
+      </ul>
+    </section>
+    <section>
+      <h2><code>position</code>プロパティ</h2>
+      <table class="table-0">
+        <tr>
+          <th class="th-0">コード</th>
+          <th class="th-0">読み</th>
+          <th class="th-0">役割</th>
+        </tr>
+        <tr>
+          <td class="td-0"><code>position: static;</code></td>
+          <td class="td-0">スタティック</td>
+          <td class="td-0">ポジションプロパティの初期値。明示的に指定することはない。</td>
+        </tr>
+        <tr>
+          <td class="td-0"><code>position: relative;</code></td>
+          <td class="td-0">レラティブ</td>
+          <td class="td-0">相対的位置指定。<code>static</code>の位置からずらして配置するための指定。<br>その後に続く要素には影響しない。</td>
+        </tr>
+        <tr>
+          <td class="td-0"><code>position: absolute;</code></td>
+          <td class="td-0">アブソリュート</td>
+          <td class="td-0">
+            絶対位置指定。配置したい要素にだけ指定するとブラウザ全体の領域が基準となるが、<br>この要素を囲む領域に<code>static</code>以外（大抵<code>rerlatibe</code>が使われる）を指定すると、<br>指定した領域を基準に配置されるようになる。<br>その後に続く要素は詰めて配置される。
+          </td>
+        </tr>
+        <tr>
+          <td class="td-0"><code>position: fixed;</code></td>
+          <td class="td-0">フィックスド</td>
+          <td class="td-0">
+            固定位置指定。<code>absolute</code>とほぼ同じ動作をするが、<br><code>abusolute</code>がブラウザをスクロールすると一緒に流れていくのに対し、<br>この指定ではスクロールをしてもその要素が止まり続ける。
+          </td>
+        </tr>
+      </table>
+      <h3>動かし方</h3>
+      <p>
+        <code>position</code>プロパティを動かす際には、<code>top</code>、<code>right</code>、<code>bottom</code>、<code>left</code>のプロパティと組み合わせて使用するが、<br><code>top: 16px;</code>と指定すると、「(要素が)上に16px動く」のではなく、「(要素を)上端から16px離す」という挙動が起きる。<br>また、マイナスの値も指定することができる。
+      </p>
+    </section>
+
+    <section>
+      <h2><code>z-index: ;</code></h2>
+      <p>
+        HTMLでは、"最後に書いたものが最後に配置される"という基本ルールがあるが、<br>HTMLをいじれない場合などに<code>z-index</code>のプロパティを用いることで、CSSのみで重なりの順序を制御することが可能。
+      </p>
+      <p>※<code>psition</code>で<code>static</code>以外を指定している要素にのみ使用することができ、大きな数値を指定するほどに前に配置されるようになる。</p>
+    </section>
+    <section>
+      <h2><code>object-fit: ;</code></h2>
+      <p>指定した領域で、置換要素をどのようにはめ込むかを指定するプロパティ。<br><code>cover;</code>の値を指定することで、置換要素の縦横比を保ちながら、領域内で最大の配置を取る。</p>
+    </section>
+    <section>
+      <h2><code>opacity: ;</code></h2>
+      <p>指定した要素の不透明度を操作するプロパティ。<br><code>0</code>は透明度100%、<code>1</code>が0%のため、<code>0.3</code>などの中間で指定すると、要素が不透明な状態となる。
+      </p>
+    </section>
+
+    <section class="s-bl">
+      <h2><code>vertical-align</code></h2>
+      <p>画像は<code>baseline</code>という線を基に配置されているため、<br>文中に画像を配置すると、下部に隙間が生じる。</p>
+      <img class="img-bl" src="baseline.png" width="224" height="112">
+      <p>この<code>baseline</code>とは違う位置に画像を揃えたい場合に、<br><code>vertical-align</code>というプロパティを使用する。</p>
+      <p><code>vertical-align: 16px;</code></p>
+      <img class="img-va16" src="v-a 16px.png" width="320" height="128">
+      <p class="p-va-16"><code>vertical-align: -16px;</code></p>
+      <img class="img-va-16" src="v-a -16px.png" width="320" height="128">
+      <p class="p-vabottom"><code>vertical-align: bottom;</code></p>
+      <img class="img-vabottom" src="v-a bottom.png" width="320" height="128">
+    </section>
+    <section>
+      <h2><code>float</code></h2>
+      <p>要素を左右どちらかに寄せる際に使用するプロパティ。<code>right</code>、<code>left</code>で指定する。</p>
+    </section>
+    <section>
+      <h2><code>clear</code></h2>
+      <p>前にある浮動要素の下へ指定した要素を移動するプロパティ。<br>「<code>float</code>プロパティで移動した時に干渉する要素を移動するためのプロパティ」の認識でOK。</p>
+    </section>
+    <section>
+      <h2><code>display: flow-root;</code></h2>
+      <p>
+        浮動要素(<code>float</code>)を含む親要素に対し、回り込みを解除するプロパティ。<br><code>float</code>がブロックボックスをはみ出してしまう時に、ブロックボックスの枠を<code>float</code>に合わせるプロパティ。
+      </p>
+    </section>
+    <section>
+      <h2><code>background</code>の一括指定プロパティ</h2>
+      <p><code>background</code>の設定にはいくつかのプロパティを指定できる。</p>
+      <dl>
+        <dt>background-size</dt>
+        <dd>
+          画像を敷き詰めたい範囲の幅と高さを指定するプロパティ。<br>値を<code>contain</code>とすると、画像がはみ出さない最大の大きさで自動で敷き詰め、<br><code>cover</code>とすると、画像の縦横比を保ちながらなるべく大きく表示される。
+        </dd>
+        <dt>background-positon</dt>
+        <dd>
+          <code>background-size: cover</code>としたとき、表示する画像の位置を指定するためのプロパティ。<br>デフォルトでは左上が起点となるが、中央に寄せたい場合は値を<code>center</code>と指定する。
+        </dd>
+      </dl>
+      <h3>backgroundの一括指定</h3>
+      <p>
+        <code>background</code>プロパティの<code>url</code>、<code>size</code>、<code>position</code>、<code>color</code>などは一括指定することができる。<br><code>size</code>のみ、「<code>position</code>の後に"
+        <code>/</code> "で区切って指定する」というルールがあるが、その他は順不同、省略可能で指定できる。
+      </p>
+      <h3>例</h3>
+      <p class="p-background">
+        <code>background-image: <span style="color: red;">url(logo.png)</span>;</code><br><code>background-size: <span style="color: green;">cover</span>;</code><br><code>background-position: <span style="color: blue;">center</span>;</code><br><code>backgroud-ccolor: <span style="color: purple;">purple</span>;</code>　　　　　の場合
+      </p>
+      <p class="p-yazi">→</p>
+      <p class="p-background2">
+        <span style="font-size: 16px;">
+          <code>background:<span style="color: red;">url(logo.png)</span> <span style="color: blue;">center</span>/<span style="color: green;">cover</span> <span style="color: purple;">purple</span>;</code>
+        </span><br>※順不同のため、以下でも可
+        <br>(<code>background:<span style="color: red;">url(logo.png)</span> <span style="color: purple;">purple</span> <span style="color: blue;">center</span>/<span style="color: green;">cover</span>;</code>)
+        <br>(<code>background: <span style="color: blue;">center</span>/<span style="color: green;">cover</span> <span style="color: red;">url(logo.png)</span> <span style="color: purple;">purple</span>;</code>)
+      </p>
+    </section>
+    <section>
+      <h2>リンク、ボタンのスタイリング</h2>
+      <h3><code>&lt;a&gt;</code>のスタイリング</h3>
+      <p>
+        <code>&lt;a&gt;</code>には、デフォルトで下線や文字色などスタイルが備わっているが、<br>テキストの状態をリセットする<code>text-decoration: nane;</code>で下線を消したり、<br>文字色を文章のデフォルトにする<code>color: inherit;</code>を指定してスタイルをリセットできる。<br>そこから、<code>border</code>プロパティなどを使いボタンのようにリンクを配置することが可能となる。
+      </p>
+      <h3><code>&lt;button&gt;</code>のスタイリング</h3>
+      <p>
+        <code>&lt;button&gt;</code>をスタイリングする場合には、初めに<code>all: unset;</code>を使い、デフォルトのスタイリングを全てリセットする。<br>また、リンクには予め備わっているが、カーソルをボタンの上に移動した際カーソルの形を変えわかりやすくする場合は、<br><code>cursor: pionter;</code>を指定する。
+      </p>
+    </section>
+    <section>
+      <h2><code>table</code>のスタイリング</h2>
+      <p>
+        <code>table</code>プロパティに枠線をつける場合には、<code>&lt;table&gt;</code>に(①)ではなく、内側の<code>&lt;th&gt;</code>、<code>&lt;td&gt;</code>に<code>border</code>プロパティを指定する。<br>また、<code>th</code>、<code>td</code>に<code>border</code>を指定するのみではセル間に隙間が生まれてしまう(②)が、<br><code>table</code>に<code>border-collaspe: collapse;</code>を指定することで埋めることができる(③)
+      </p>
+      <div class="div-collapse">
+        <h4><code>border-collapse:</code></h4>
+        <p><code>table</code>内のセルの境界を共有するか分離するかを指定するプロパティ<br><code>collapse;</code>→共有する　　　<code>separate;</code>→分離する
+        </p>
+      </div>
+      <div class="table-div">
+        <p class="p-table">①<code>table{<br> border: 1px solid gray; <br>}</code>　　　　　　　のみ</p>
+        <table class="table-none">
+          <tr>
+            <th>th</th>
+            <th>th</th>
+          </tr>
+          <tr>
+            <td>td</td>
+            <td>td</td>
+          </tr>
+        </table>
+      </div>
+      <div class="table-div">
+        <p class="p-table">
+          ②<code>th{ border: 1px solid gray;<br>background: lightgray; }<br>td{ border: 1px solid gray; }</code></p>
+        <table class="table-2">
+          <tr>
+            <th class="th-1">th</th>
+            <th class="th-1">th</th>
+          </tr>
+          <tr>
+            <td class="td-1">td</td>
+            <td class="td-1">td</td>
+          </tr>
+        </table>
+      </div>
+      <div class="table-div">
+        <p class="p-table">
+          ③<code>table{ border-collapse: collapse; }<br>th{ border: 1px solid gray; }<br>td{ border: 1px solid gray; }</code>
+        </p>
+        <table class="table-1">
+          <tr>
+            <th class="th-1">th</th>
+            <th class="th-1">th</th>
+          </tr>
+          <tr>
+            <td class="td-1">td</td>
+            <td class="td-1">td</td>
+          </tr>
+        </table>
+      </div>
+    </section>
+    <section>
+      <h2>リストのスタイリング</h2>
+      <p>箇条書きリストの「・」を消すには、<code>list-style:</code>のプロパティを用いて<code>none;</code>を指定する。</p>
+    </section>
+    <section>
+      <h2>スタイリングの計算</h2>
+      <p><code>width</code>などのプロパティにおいて、CSSでは単位の違う値を計算する場合には<code>calc</code>という命令を使用することができる。</p>
+      <p>
+        <code>width: calc(100% - 16px - 16px);</code><br>とすることで、”この領域の幅を横幅<code>100%</code>から、両側<code>16px</code>ずつを引いた値に設定する”という値が設定される。<br><code>calc</code>の式を設定する場合、計算記号の前後には半角空白を入れる必要があることに注意。
+      </p>
+    </section>
+    <section>
+      <h2>px 以外の単位 <code>em</code>,<code>rem</code></h2>
+      <h3>em</h3>
+      <p>それぞれの要素に設定されているフォントサイズの"何文字分"かという意味の単位</p>
+      <h3>rem</h3>
+      <p>emに対し、文書全体で設定された文字サイズを基準にした単位</p>
+    </section>
+    <section>
+      <h2>カラーリングの指定</h2>
+      <h3>RGB</h3>
+      <p>Red,Green,blueそれぞれの配色の混合割合を0〜255の数値で表す方法</p>
+      <p>16進数を用いて表現することも可能。<br>#を頭に置き、最大値255 = ff,最小値0 = 00と置く。<br>rgb(255 0 0) = #ff0000 = 赤</p>
+      <h3>HSL</h3>
+      <p>Hue（色相環）を用いた方法。<br>degree(角度)で色を指定する。単位はdeg<br>そこに、Saturation（彩度）、Lightness（輝度）を％で指定するという方法</p>
+      <p class="etc-3"><code>hsl(0deg 100% 50%)</code></p>
+      <h3>HWB</h3>
+      <p>Hue（色相環）に、WhiteとBlackの混ぜ具合いを指定する方法。</p>
+      <p class="etc-4"><code>hwb(0deg 50 10)</code></p>
+      <h3>不透明度</h3>
+      <p>カラーを指定した後に、<code> / </code>をつけてから<code>0</code>〜<code>1</code>で不透明度を指定できる。</p>
+      <p class="etc-1"><code>rgb(255 0 0 / .3)</code></p>
+      <p class="etc-2"><code>hsl(0 100 50 / .3)</code></p>
+    </section>
+    <section>
+      <h2>CSS変数</h2>
+      <p>
+        一括で編集したいプロパティを管理するための要素。<br>はじめに、<code>:root</code>というセレクターを用いて、プロパティには必ずハイフン２文字で始まる任意の名前、その名前で管理したい値を設定する。<br>そして、その値を指定したいところには<code>var( )</code>と置いて、括弧内に上で指定したプロパティ名（ハイフン２文字で始まるプロパティ）を宣言することで、<br><code>;root</code>セレクター内の値を編集すれば指定した値全てが一括で編集できるようになる。
+      </p>
+      <p>
+        <code>:root{ --main-color:<name>orange</name>; }</code><br><code>h1{ color:var(<name>--main-color</name>) }</code><br>
+        <code>p{ color:var(<name>--main-color</name>) }</code>
+      </p>
+    </section>
+  </main>
+</body>
+
+</html>
